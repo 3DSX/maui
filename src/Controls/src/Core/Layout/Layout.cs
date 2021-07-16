@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Layouts;
 
-// This is a temporary namespace until we rename everything and move the legacy layouts
-namespace Microsoft.Maui.Controls.Layout2
+namespace Microsoft.Maui.Controls
 {
 	[ContentProperty(nameof(Children))]
-	public abstract class Layout : View, Microsoft.Maui.ILayout, IEnumerable<IView>
+	public abstract class Layout : View, Microsoft.Maui.ILayout, IEnumerable<IView>, IBindableLayout
 	{
 		ILayoutManager _layoutManager;
 		ILayoutManager LayoutManager => _layoutManager ??= CreateLayoutManager();
@@ -18,6 +17,8 @@ namespace Microsoft.Maui.Controls.Layout2
 		public IReadOnlyList<IView> Children { get => _children.AsReadOnly(); }
 
 		public ILayoutHandler LayoutHandler => Handler as ILayoutHandler;
+
+		IList IBindableLayout.Children => _children;
 
 		protected abstract ILayoutManager CreateLayoutManager();
 

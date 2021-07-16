@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Microsoft.Maui.Controls.Internals;
 
-namespace Microsoft.Maui.Controls
+namespace Microsoft.Maui.Controls.Compatibility
 {
 	[TypeConverter(typeof(ConstraintTypeConverter))]
 	public sealed class Constraint

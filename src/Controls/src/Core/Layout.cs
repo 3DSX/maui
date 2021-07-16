@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -7,10 +8,10 @@ using System.Linq;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Graphics;
 
-namespace Microsoft.Maui.Controls
+namespace Microsoft.Maui.Controls.Compatibility
 {
 	[ContentProperty(nameof(Children))]
-	public abstract class Layout<T> : Layout, Microsoft.Maui.ILayout, IViewContainer<T> where T : View
+	public abstract class Layout<T> : Layout, Microsoft.Maui.ILayout, IBindableLayout, IViewContainer<T> where T : View
 	{
 		// TODO ezhart We should look for a way to optimize this a bit
 		IReadOnlyList<Microsoft.Maui.IView> Microsoft.Maui.IContainer.Children => Children.ToList();
@@ -22,6 +23,8 @@ namespace Microsoft.Maui.Controls
 		public new IList<T> Children => _children;
 
 		public ILayoutHandler LayoutHandler => Handler as ILayoutHandler;
+
+		IList IBindableLayout.Children => _children;
 
 		protected override void OnChildAdded(Element child)
 		{

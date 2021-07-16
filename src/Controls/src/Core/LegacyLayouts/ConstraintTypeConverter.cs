@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Microsoft.Maui.Controls
+namespace Microsoft.Maui.Controls.Compatibility
 {
 	[Xaml.ProvideCompiled("Microsoft.Maui.Controls.XamlC.ConstraintTypeConverter")]
 	[Xaml.TypeConversion(typeof(Constraint))]
