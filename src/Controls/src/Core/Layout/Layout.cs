@@ -9,7 +9,7 @@ namespace Microsoft.Maui.Controls
 	[ContentProperty(nameof(Children))]
 	public abstract class Layout : View, Microsoft.Maui.ILayout, IEnumerable<IView>, IBindableLayout
 	{
-		ILayoutManager _layoutManager;
+		protected ILayoutManager _layoutManager;
 		ILayoutManager LayoutManager => _layoutManager ??= CreateLayoutManager();
 
 		readonly List<IView> _children = new List<IView>();
